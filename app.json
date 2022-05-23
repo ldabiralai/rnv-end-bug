@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "rnv-end-bug",
+    "slug": "rnv-end-bug",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "rnv-end-bug"
+}
