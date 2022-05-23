@@ -9,7 +9,6 @@ export default function App() {
     setPaused(true);
 
     setTimeout(() => {
-      video.current.seek(0);
       setPaused(false);
     });
   };
