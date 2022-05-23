@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useRef, useState } from "react";
+import Video from "react-native-video";
 
 export default function App() {
+  const video = useRef();
+  const [paused, setPaused] = useState(false);
+  const onEnd = () => {
+    console.log("onEnd", Date.now());
+    setPaused(true);
+
+    setTimeout(() => {
+      video.current.seek(0);
+      setPaused(false);
+    });
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Video
+      ref={video}
+      source={{
+        uri: "https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      }}
+      style={{ flex: 1 }}
+      onEnd={onEnd}
+      paused={paused}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
